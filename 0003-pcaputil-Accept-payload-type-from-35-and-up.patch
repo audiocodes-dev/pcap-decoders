@@ -1,25 +1,25 @@
-From 71d4a369321f15e98ee5fef45284aba0a9675fea Mon Sep 17 00:00:00 2001
+From 2f0286493b7f7405ef54f926968e1977c59858af Mon Sep 17 00:00:00 2001
 From: Orgad Shaneh <orgad.shaneh@audiocodes.com>
 Date: Wed, 11 Dec 2024 14:18:14 +0200
-Subject: [PATCH 1/7] pcaputil: Accept payload type from 35 and up
+Subject: [PATCH 3/3] pcaputil: Accept payload type from 35 and up
 
 ---
  pjsip-apps/src/samples/pcaputil.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/pjsip-apps/src/samples/pcaputil.c b/pjsip-apps/src/samples/pcaputil.c
-index 8875b50a9..f53372278 100644
+index 61a4f0c90..4a3ccaf75 100644
 --- a/pjsip-apps/src/samples/pcaputil.c
 +++ b/pjsip-apps/src/samples/pcaputil.c
-@@ -362,7 +362,7 @@ static void pcap2wav(const struct args *args)
+@@ -497,7 +497,7 @@ static void pcap2wav(const struct args *args)
  
      /* Get codec info and param for the specified payload type */
-     app.pt = pkt0.rtp->pt;
+     app.pt = pkt.rtp->pt;
 -    if (app.pt < 96) {
 +    if (app.pt < 35) {
-         T( pjmedia_codec_mgr_get_codec_info(cmgr, pkt0.rtp->pt, &ci) );
+         T( pjmedia_codec_mgr_get_codec_info(cmgr, pkt.rtp->pt, &ci) );
      } else {
          unsigned cnt = 2;
 -- 
-2.43.0
+2.53.0
 

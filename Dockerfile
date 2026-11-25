@@ -19,7 +19,7 @@ RUN apt-get install -y --no-install-recommends \
     libvo-amrwbenc-dev
 
 WORKDIR /pjsip
-ARG VERSION_PJSIP=2.16
+ARG VERSION_PJSIP=2.18
 RUN wget "https://github.com/pjsip/pjproject/archive/refs/tags/${VERSION_PJSIP}.tar.gz" -O - | tar xzf - --strip-components=1
 COPY *.patch .
 RUN for patch in *.patch; do patch -p1 < $patch; done
